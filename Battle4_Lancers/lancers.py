@@ -50,7 +50,7 @@ class Lancer(Warrior):
     def __init__(self):
         super().__init__(attack=6, health=50)
 
-        
+
 class Army(object):
 
     def __init__(self):
@@ -73,12 +73,19 @@ class Battle(object):
             s1 = army1.soldiers[army1Dead]
             s2 = army2.soldiers[army2Dead]
             print(s1.health)
-            print(s2.health)
+            for x in range(len(army2.soldiers)):
+                print(f"soldier {x} {army2.soldiers[x].health}")
+            
             # army 1 attacks
             if counter % 2 != 0 and army1Dead < len(army1.soldiers):
                 (s2.takeDamage(s1.attack))
                 if type(s1) == Vampire and s1.health != 0:
                     s1.vampirism_boost(s2.defense)
+                if type(s1) == Lancer:
+                    try:
+                        army2.soldiers[army2Dead + 1].takeDamage(s1.attack / 2)
+                    except expression as identifier:
+                        pass
                 if not s2.is_alive:
                     army2Dead += 1
                     counter = 0

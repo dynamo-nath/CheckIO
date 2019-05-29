@@ -37,3 +37,14 @@ class LancersTesting(unittest.TestCase):
     #     a2.addUnits(Warrior, 2)
 
     #     self.assertEqual(b.fight(a1, a2), result)
+
+a1 = Army()
+a2 = Army()
+
+a1.addUnits(Lancer, 1)
+
+a2.addUnits(Warrior, 1)
+a2.addUnits(Knight, 1)
+
+b = Battle()
+print(b.fight(a1, a2))
